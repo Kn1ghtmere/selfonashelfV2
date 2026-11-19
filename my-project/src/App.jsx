@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import Shelf from './components/Shelf'
 import { shelves } from './data/shelves'
+import Modal from './components/Modal'
+import ModalContent from './components/ModalContent'
 
 export default function App() {
   const [openItem, setOpenItem] = useState(null)
@@ -36,6 +38,13 @@ export default function App() {
           Self On A Shelf
         </a>
       </div>
+
+          {openItem && (
+            <Modal onClose={() => setOpenItem(null)}>
+              <ModalContent item={openItem} />
+            </Modal>
+          )}
+
     </div>
   )
 }
