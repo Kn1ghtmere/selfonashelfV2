@@ -1,4 +1,5 @@
 import Book from './Book'
+import Poem from './Poem'
 
 export default function ModalContent({item}) {
     if (item.type === 'image') {
@@ -20,11 +21,7 @@ export default function ModalContent({item}) {
     
 
     if (item.type === 'poem') {
-        return (
-            <div className="rounded bg-parchment p-8 text-wood-ink">
-                poem
-            </div>
-        )
+        return <Poem poem={item.poem} />
     }
   return null   
 }

@@ -10,7 +10,8 @@
   --color-shelf: #5a3210;
   --color-shelf-edge: #3a1f08;
   --color-page: #e7c5ad;
-
+  --font-poem: 'Cormorant Upright', serif;
+  --color-old-ink: #4a3728;
 }
 
 body {
