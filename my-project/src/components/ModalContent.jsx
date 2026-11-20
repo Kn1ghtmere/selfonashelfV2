@@ -1,3 +1,5 @@
+import Book from './Book'
+
 export default function ModalContent({item}) {
     if (item.type === 'image') {
         return (
@@ -10,12 +12,12 @@ export default function ModalContent({item}) {
     }
 
     if (item.type === 'book') {
-        return (
-            <div className="rounded bg-parchment p-8 text-wood-ink">
-                Book
-            </div>
-        )
-    }
+        if (!item.pages) {
+            return <div className="rounded bg-parchment p-8 text-wood-ink">Coming Soon</div>
+        }
+        return <Book pages={item.pages} />
+        }
+    
 
     if (item.type === 'poem') {
         return (
@@ -24,5 +26,5 @@ export default function ModalContent({item}) {
             </div>
         )
     }
-    return null
+  return null   
 }
