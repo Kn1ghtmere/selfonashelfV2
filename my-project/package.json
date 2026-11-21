@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:viewer": "vite build -c vite-viewer.config.js && node scripts/copy-viewer.js"
+
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.5",

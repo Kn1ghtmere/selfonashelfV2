@@ -1,6 +1,6 @@
 export default function Poem({ content: poem }) {
   return (
-    <div className="max-h-[85vh] w-[90vw] max-w-2xl overflow-y-auto rounded bg-[#d4a564] bg-[url('/assets/natural-paper.png')] px-6 py-8 text-center font-poem shadow-2xl md:px-12">
+    <div style={{ backgroundImage: "url('assets/natural-paper.png')"}} className="max-h-[85vh] w-[90vw] max-w-2xl overflow-y-auto rounded bg-[#d4a564] px-6 py-8 text-center font-poem shadow-2xl md:px-12">
       <h1 className="pb-8 text-2xl font-medium text-old-ink md:text-3xl">
         "{poem.title}"
       </h1>

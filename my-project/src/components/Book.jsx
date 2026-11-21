@@ -15,8 +15,7 @@ export default function Book({ content }) {
             <div className="flex-1 overflow-y-auto border-b border-[#c9b99a] px-6 pb-16 pt-6 md:border-b-0 md:border-r">
                 {isCover ? (
                     <>
-                    <h1 className="flex-1 overflow-y-auto border-b border-[#c9b99a] px-6 pb-16 pt-6 md:border-b-0 md:border-r">
-                    </h1>
+                    <h1 className="mb-2 text-2xl">{page.title}</h1>
                     <h3 className="mb-4 text-xs tracking-widest text-[#9a8870]">{page.subtitle}</h3>
 
                     </>

@@ -3,14 +3,14 @@ export const knightsJourney = [
         type: 'cover',
         title: 'The Knight\'s Journey',
         subtitle: 'A tale not worth telling',
-        image: '/assets/coverpage.png',
+        image: 'assets/coverpage.png',
         leading: 3.5 ,
         lines: ['was bored wrote ionnow what i wrote'],
     },
 
     {
         title:'I',
-        image: '/assets/page1.png',
+        image: 'assets/page1.png',
         leading: 5.2,
         lines: [
       'Another obstacle left behind,',
@@ -22,7 +22,7 @@ export const knightsJourney = [
 
     {
         title:'II',
-        image: '/assets/page2.png',
+        image: 'assets/page2.png',
         leading: 3,
         lines: [
         'Traversing upwards with no dimes,',
@@ -37,7 +37,7 @@ export const knightsJourney = [
 
     {
          title: 'III',
-    image: '/assets/page3.png',
+    image: 'assets/page3.png',
     leading: 2.5,
     lines: [
       'On the path to the mountains he continues.',
@@ -51,7 +51,7 @@ export const knightsJourney = [
     },
     {
     title: 'IV',
-    image: '/assets/page4.png',
+    image: 'assets/page4.png',
     leading: 3,
     lines: [
       'He took on a purpose and an oath of a knight,',
