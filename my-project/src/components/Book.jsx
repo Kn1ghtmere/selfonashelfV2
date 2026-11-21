@@ -1,7 +1,11 @@
 import { useState } from 'react'
 
-export default function Book({pages}) {
+export default function Book({ content }) {
     const [current, setCurrent] = useState(0)
+    const pages = content.pages
+    if (!pages?.length) {
+        return <div className="rounded bg-parchment p-8 text-wood-ink">Coming moon</div>
+    }
     const page = pages[current]
     const isCover = page.type === 'cover'
 

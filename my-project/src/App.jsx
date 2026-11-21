@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import Shelf from './components/Shelf'
-import { shelves } from './data/shelves'
+import { defaultShelf } from './data/defaultShelf'
 import Modal from './components/Modal'
 import ModalContent from './components/ModalContent'
 
 export default function App() {
+  const [shelf, setShelf] = useState(defaultShelf)
   const [openItem, setOpenItem] = useState(null)
 
   return (
@@ -20,17 +21,17 @@ export default function App() {
 
       <main className="flex flex-1 flex-col gap-6 bg-[url('/assets/wood.png')] bg-cover bg-center px-6 py-10 md:px-12">
         <h2 className="text-lg uppercase tracking-[0.15em] text-wood-ink opacity-70 md:text-xl">
-          Knightmere's Archive
+          {shelf.title}
         </h2>
         <div className="flex w-full max-w-3xl flex-col gap-6">
-          {shelves.map((items, i) => (
-            <Shelf key={i} items={items} onOpen={setOpenItem} />
+          {shelf.shelves.map((s) => (
+            <Shelf key={s.id} items={s.items} onOpen={setOpenItem} />
           ))}
         </div>
       </main>
 
       <footer className="bg-ink px-6 py-6 text-center text-xs uppercase tracking-[0.15em] text-faded md:px-12">
-        made by kn1ghtmere
+        made by {shelf.owner}
       </footer>
       <div className="bg-ink-deep px-6 py-4 text-center text-xs tracking-widest text-[#5a4030] md:px-12">
         A remake of my previous project{' '}
@@ -39,12 +40,11 @@ export default function App() {
         </a>
       </div>
 
-          {openItem && (
-            <Modal onClose={() => setOpenItem(null)}>
-              <ModalContent item={openItem} />
-            </Modal>
-          )}
-
+      {openItem && (
+        <Modal onClose={() => setOpenItem(null)}>
+          <ModalContent item={openItem} />
+        </Modal>
+      )}
     </div>
   )
 }
