@@ -3,7 +3,7 @@ import Shelf from './Shelf'
 import Modal from './Modal'
 import ModalContent from './ModalContent'
 
-export default function ShelfView({ shelf }) {
+export default function ShelfView({ shelf,editor }) {
   const [openItem, setOpenItem] = useState(null)
 
   return (
@@ -26,8 +26,21 @@ export default function ShelfView({ shelf }) {
         </h2>
         <div className="flex w-full max-w-3xl flex-col gap-6">
           {shelf.shelves.map((s) => (
-            <Shelf key={s.id} items={s.items} onOpen={setOpenItem} />
+            <Shelf
+            key={s.id}
+            items={s.items}
+            onOpen={editor ? editor.onSelect : setOpenItem }
+            onAdd={editor ? () => editor.onAdd(s.id) : undefined}
+            />
           ))}
+          {editor && (
+            <button
+            onClick={editor.onAddShelf}
+            className="self-start rounded-border-2 border-dashed border-wood-ink/50 px-4 py-2 text-sm uppercase tracking-widest text-wood-ink"
+            >
+              + Add shelf
+            </button>
+          )}
         </div>
       </main>
 

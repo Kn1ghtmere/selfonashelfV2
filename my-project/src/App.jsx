@@ -1,20 +1,22 @@
 import { useState } from 'react'
 import ShelfView from './components/ShelfView'
+import Creator from './components/Creator'
 import { defaultShelf } from './data/defaultShelf'
-import { exportShelf } from './lib/exportShelf'
 
 export default function App() {
-  const [shelf] = useState(defaultShelf)
+  const [mode,setMode] = useState('view')
+
+  if (mode === 'create') return <Creator onExit={() => setMode('view')} />
 
   return (
     <>
-      <button
-        onClick={() => exportShelf(shelf)}
-        className="fixed bottom-4 left-4 z-40 rounded bg-parchment px-3 py-1.5 text-wood-ink"
-      >
-        Export
-      </button>
-      <ShelfView shelf={shelf} />
+    <button
+    onClick={() => setMode('create')}
+    className="fixed bottom-4 left-z z-40 rounded bg-parchment px-3 py-1.5 text-wood-ink"
+    >
+      Create your own shelf
+    </button>
+    <ShelfView shelf={defaultShelf} />
     </>
   )
 }
