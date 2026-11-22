@@ -15,7 +15,7 @@ const newItem = () => ({
 })
 
 export default function Creator({ onExit }) {
-    const { shelf, addItem, updateItem, removeItem, addShelf } = useShelf(
+    const { shelf, addItem, updateItem, removeItem, addShelf, updateShelf } = useShelf(
         emptyShelf,
         'selfonashelf:mine',
 
@@ -42,8 +42,13 @@ export default function Creator({ onExit }) {
          shelf={shelf}
          editor={{
             onSelect: (item) => setSelectedId(item.id),
-            onAdd: (shelfId) => addItem(shelfId, newItem()),
+            onAdd: (shelfId) => {
+                const id = crypto.randomUUID()
+                addItem(shelfId, {...newItem(), id})
+                setSelectedId(id)
+            },
             onAddShelf: addShelf,
+            onShelfChange: updateShelf,
          }}
          />
 

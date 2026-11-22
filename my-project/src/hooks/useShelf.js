@@ -50,5 +50,8 @@ export function useShelf(initial, storageKey) {
       shelves: [...s.shelves, { id: crypto.randomUUID(), items: [] }],
     }))
 
-  return { shelf, addItem, updateItem, removeItem, addShelf }
+
+  const updateShelf = (changes) => setShelf((s) => ({ ...s, ...changes}))
+
+  return { shelf, addItem, updateItem, removeItem, addShelf, updateShelf }
 }
