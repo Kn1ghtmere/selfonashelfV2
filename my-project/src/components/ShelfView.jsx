@@ -37,7 +37,7 @@ export default function ShelfView({ shelf,editor }) {
         onChange={(v) => editor.onShelfChange({ title: v })}
         className="text-lg uppercase tracking-[0.15em] text-wood-ink opacity-70 md:text-xl"
         />
-        
+
         <div className="flex w-full max-w-3xl flex-col gap-6">
           {shelf.shelves.map((s) => (
             <Shelf
@@ -58,8 +58,16 @@ export default function ShelfView({ shelf,editor }) {
         </div>
       </main>
 
-      <footer className="bg-ink px-6 py-6 text-center text-xs uppercase tracking-[0.15em] text-faded md:px-12">
-        made by {shelf.owner}
+      <footer className="flex items-center justify-center gap-2 bg-ink px-6 py-6 text-xs uppercase tracking-[0.15em] text-faded md:px-12">
+        <span>made by</span>
+        <div className={editor ? 'w-40' : ''}>
+          <EditableText
+          editing={!!editor}
+          value={shelf.owner}
+          onChange={(v) => editor.onShelfChange({owner: v})}
+          className="uppercase tracking-[0.15em]"
+          />
+        </div>
       </footer>
 
       {shelf.footer && (
