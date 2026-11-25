@@ -3,6 +3,9 @@ import Shelf from './Shelf'
 import Modal from './Modal'
 import ModalContent from './ModalContent'
 import EditableText from './EditableText'
+import Banner from './Banner'
+
+
 
 export default function ShelfView({ shelf,editor }) {
   const [openItem, setOpenItem] = useState(null)
@@ -27,7 +30,7 @@ export default function ShelfView({ shelf,editor }) {
       </header>
 
       <main
-        className="flex flex-1 flex-col gap-6 bg-cover bg-center px-6 py-10 md:px-12"
+        className="flex flex-1 flex-col gap-6 bg-cover bg-center px-6 py-10 md:px-12 relative xl:min-h-[30rem]"
         style={{ backgroundImage: "url('assets/wood.png')" }}
       >
         <EditableText
@@ -47,6 +50,16 @@ export default function ShelfView({ shelf,editor }) {
             onAdd={editor ? () => editor.onAdd(s.id) : undefined}
             />
           ))}
+
+          {shelf.banner && (
+            <Banner
+            banner={shelf.banner}
+            editing={!!editor}
+            onChange={(changes) => editor.onShelfChange({ banner: {...shelf.banner,...changes} }) }
+            onPickIcon={editor?.onPickBannerIcon}
+            />
+          )}
+
           {editor && (
             <button
             onClick={editor.onAddShelf}

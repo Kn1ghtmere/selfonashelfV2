@@ -5,6 +5,7 @@ import { useShelf } from '../hooks/useShelf'
 import {emptyShelf} from '../data/emptyShelf'
 import {itemTypes} from '../itemTypes'
 import {exportShelf} from '../lib/exportShelf'
+import IconPicker from './IconPicker'
 
 const newItem = () => ({
     type: 'image',
@@ -22,6 +23,7 @@ export default function Creator({ onExit }) {
     )
 
     const [selectedId, setSelectedId] = useState(null)
+    const [pickingIcon, setPickingIcon] = useState(false)
     const selected = shelf.shelves.flatMap((s) => s.items).find((i) => i.id === selectedId)
 
     return (
@@ -49,6 +51,7 @@ export default function Creator({ onExit }) {
             },
             onAddShelf: addShelf,
             onShelfChange: updateShelf,
+            onPickBannerIcon: () => setPickingIcon(true),
          }}
          />
 
@@ -63,6 +66,15 @@ export default function Creator({ onExit }) {
             onClose={() => setSelectedId(null)}
             />
          )}
+
+         {pickingIcon && (
+            <IconPicker
+            value={shelf.banner?.icon ?? ''}
+            onPick={(key) => updateShelf({ banner: { ...shelf.banner , icon:key}})}
+            onClose={() => setPickingIcon(false)}
+            />
+         )}
+
         </>
     )
 }

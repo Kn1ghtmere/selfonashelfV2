@@ -1,7 +1,7 @@
 import JSZip from 'jszip'
 import { resolveIcon } from '../data/icons'
 
-const ALWAYS = ['assets/wood.png', 'assets/natural-paper.png']
+const ALWAYS = ['assets/wood.png', 'assets/natural-paper.png', 'assets/bannerfat1.png']
 const isLocal = (s) =>
   typeof s === 'string' && (s.startsWith('assets/') || s.startsWith('data:image/'))
 const extOf = (dataUrl) =>
@@ -41,6 +41,7 @@ export async function exportShelf(shelf) {
 
   const normalized = {
     ...shelf,
+    banner: shelf.banner && { ...shelf.banner, icon: resolveIcon(shelf.banner.icon)},
     shelves: shelf.shelves.map((s) => ({
       ...s,
       items: s.items.map((it) => ({ ...it, icon: resolveIcon(it.icon) })),
