@@ -7,7 +7,7 @@ function load(initial, key) {
     const saved = localStorage.getItem(key)
     return saved ? JSON.parse(saved) : initial
   } catch {
-    return initial
+    return saved ? { ...initial, ...JSON.parse(saved) } : initial
   }
 }
 
