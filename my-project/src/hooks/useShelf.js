@@ -5,9 +5,9 @@ const mapShelves = (shelf, fn) => ({ ...shelf, shelves: shelf.shelves.map(fn) })
 function load(initial, key) {
   try {
     const saved = localStorage.getItem(key)
-    return saved ? JSON.parse(saved) : initial
-  } catch {
     return saved ? { ...initial, ...JSON.parse(saved) } : initial
+  } catch {
+    return initial
   }
 }
 

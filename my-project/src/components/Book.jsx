@@ -6,12 +6,13 @@ export default function Book({ content }) {
     if (!pages?.length) {
         return <div className="rounded bg-parchment p-8 text-wood-ink">Coming moon</div>
     }
-    const page = pages[current]
+    const safe = Math.min(current, pages.length - 1)
+    const page = pages[safe]
     const isCover = page.type === 'cover'
 
     return (
         <div className="relative flex h-[80vh] w-[90vw] max-w-3xl flex-col overflow-hidden rounded bg-page text-wood-ink shadow-2xl md:h-[440px] md:flex-row">
-            {}
+    
             <div className="flex-1 overflow-y-auto border-b border-[#c9b99a] px-6 pb-16 pt-6 md:border-b-0 md:border-r">
                 {isCover ? (
                     <>
@@ -25,7 +26,7 @@ export default function Book({ content }) {
                     )}
 
                     <div style={{ lineHeight: page.leading }}>
-                        {page.lines.map((line, i) => (
+                        {(page.lines ?? []).map((line, i) => (
                             <p key={i} className="text-xl">{line}</p>
                         ))}
                     </div>
@@ -37,15 +38,15 @@ export default function Book({ content }) {
             </div>
 
             <button 
-            onClick={() => setCurrent(current - 1)}
-            disabled={current === 0}
+            onClick={() => setCurrent(safe - 1)}
+            disabled={safe === 0}
             className="absolute bottom-4 left-4 border border-[#c9b99a] px-3 py-1.5 text-sm disabled:opacity-30"
             >
              ←
             </button>
             <button 
-            onClick={() => setCurrent(current + 1)}
-            disabled={current === pages.length -1}
+            onClick={() => setCurrent(safe + 1)}
+            disabled={safe === pages.length -1}
             className="absolute bottom-4 right-4 border border-[#c9b99a] px-3 py-1.5 text-sm disabled:opacity-30"
             >
              →
