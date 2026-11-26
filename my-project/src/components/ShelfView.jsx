@@ -51,15 +51,7 @@ export default function ShelfView({ shelf,editor }) {
             />
           ))}
 
-          {shelf.banner && (
-            <Banner
-            banner={shelf.banner}
-            editing={!!editor}
-            onChange={(changes) => editor.onShelfChange({ banner: {...shelf.banner,...changes} }) }
-            onPickIcon={editor?.onPickBannerIcon}
-            />
-          )}
-
+          
           {editor && (
             <button
             onClick={editor.onAddShelf}
@@ -69,6 +61,16 @@ export default function ShelfView({ shelf,editor }) {
             </button>
           )}
         </div>
+        
+          {shelf.banner && (
+            <Banner
+            banner={shelf.banner}
+            editing={!!editor}
+            onChange={(changes) => editor.onShelfChange({ banner: {...shelf.banner,...changes} }) }
+            onPickIcon={editor?.onPickBannerIcon}
+            />
+          )}
+
       </main>
 
       <footer className="flex items-center justify-center gap-2 bg-ink px-6 py-6 text-xs uppercase tracking-[0.15em] text-faded md:px-12">

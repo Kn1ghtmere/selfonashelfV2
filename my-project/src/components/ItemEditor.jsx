@@ -1,6 +1,9 @@
 import Modal from './Modal'
 import { icons } from '../data/icons'
 import { itemTypes } from '../itemTypes'
+import PoemEditor from './PoemEditor'
+import { isSafeImage } from '../lib/validate'
+
 
 const field = 'mt-1 w-full rounded border border-shelf-edge bg-white/60 px-2 py-1'
 
@@ -14,8 +17,7 @@ const isHttps = (value) => {
 
 export default function ItemEditor({ item, onChange, onDelete, onClose }) {
   const src = item.content?.src ?? ''
-  const okSrc = !src || src.startsWith('assets/') || isHttps(src)
-
+  const okSrc = isSafeImage(src)
   return (
     <Modal onClose={onClose}>
       <div className="max-h-[85vh] w-[90vw] max-w-md space-y-4 overflow-y-auto rounded bg-parchment p-6 text-wood-ink shadow-2xl">
@@ -74,19 +76,25 @@ export default function ItemEditor({ item, onChange, onDelete, onClose }) {
           </select>
         </label>
 
-        {item.type === 'image' ? (
+        {item.type === 'image' && (
           <label className="block">
             <span className="text-sm">Image address</span>
-            <input
-              value={src}
-              onChange={(e) => onChange({ content: { src: e.target.value } })}
-              placeholder="https://..."
-              className={field}
+            <input 
+            value={src}
+            onChange={(e) => onChange({ content: {src: e.target.value } })}
+            placeholder="htpps://..."
+            className={field}
             />
             {!okSrc && <span className="text-xs text-red-800">Must start with https://</span>}
           </label>
-        ) : (
-          <p className="text-sm opacity-70">Editors for {item.type} content come next.</p>
+        )}
+
+        {item.type === 'poem' && (
+          <PoemEditor content={item.content} onChange={(content) => onChange({content})} />
+        )}
+
+        {item.type === 'book' && (
+          <BookEditor content={item.content} onChange={(content) => onChange({ content })} />
         )}
 
         <div className="flex justify-between">
