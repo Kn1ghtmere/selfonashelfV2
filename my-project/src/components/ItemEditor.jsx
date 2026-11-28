@@ -3,17 +3,11 @@ import { icons } from '../data/icons'
 import { itemTypes } from '../itemTypes'
 import PoemEditor from './PoemEditor'
 import { isSafeImage } from '../lib/validate'
+import BookEditor from './BookEditor'
 
 
 const field = 'mt-1 w-full rounded border border-shelf-edge bg-white/60 px-2 py-1'
 
-const isHttps = (value) => {
-  try {
-    return new URL(value).protocol === 'https:'
-  } catch {
-    return false
-  }
-}
 
 export default function ItemEditor({ item, onChange, onDelete, onClose }) {
   const src = item.content?.src ?? ''
@@ -82,7 +76,7 @@ export default function ItemEditor({ item, onChange, onDelete, onClose }) {
             <input 
             value={src}
             onChange={(e) => onChange({ content: {src: e.target.value } })}
-            placeholder="htpps://..."
+            placeholder="https://..."
             className={field}
             />
             {!okSrc && <span className="text-xs text-red-800">Must start with https://</span>}

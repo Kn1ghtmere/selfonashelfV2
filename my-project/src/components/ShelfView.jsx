@@ -30,7 +30,7 @@ export default function ShelfView({ shelf,editor }) {
       </header>
 
       <main
-        className="flex flex-1 flex-col gap-6 bg-cover bg-center px-6 py-10 md:px-12 relative xl:min-h-[30rem]"
+        className="flex flex-1 flex-col gap-6 bg-cover bg-center px-6 py-10 md:px-12 relative xl:min-h-[40rem]"
         style={{ backgroundImage: "url('assets/wood.png')" }}
       >
         <EditableText
@@ -55,7 +55,7 @@ export default function ShelfView({ shelf,editor }) {
           {editor && (
             <button
             onClick={editor.onAddShelf}
-            className="self-start rounded-border-2 border-dashed border-wood-ink/50 px-4 py-2 text-sm uppercase tracking-widest text-wood-ink"
+            className="self-start rounded border-2 border-dashed border-wood-ink/50 px-4 py-2 text-sm uppercase tracking-widest text-wood-ink"
             >
               + Add shelf
             </button>

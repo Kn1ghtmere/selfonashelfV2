@@ -1,12 +1,14 @@
 import EditableText from "./EditableText";
 import { resolveIcon } from "../data/icons";
+import { DEFAULT_BANNER } from "../lib/constants";
 
 export default function Banner({ banner, editing, onChange, onPickIcon }) {
     const iconSrc = resolveIcon(banner.icon)
+    const bannerSrc = banner.image ?? DEFAULT_BANNER 
 
     return (
-        <div className="relative mx-auto aspect-[4/7] w-67 md:w-72 xl:absolute xl:right-12 xl:top-6 xl:mx-0 xl:w-64">
-            <img src="assets/bannerfat1.png" alt="" className="absolute inset-0 h-full w-full"/>
+        <div className="relative mx-auto aspect-[4/7] w-67 md:w-72 xl:absolute xl:right-12 xl:top-6 xl:mx-0 xl:w-80">
+            <img src={bannerSrc} alt="" className="absolute inset-0 h-full w-full"/>
 
             <div className="absolute inset-x-8 top-10 bottom-24 flex flex-col items-center gap-3 overflow-hidden text-wood-ink">
                 {editing ? (

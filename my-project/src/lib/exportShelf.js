@@ -1,7 +1,8 @@
 import JSZip from 'jszip'
 import { resolveIcon } from '../data/icons'
+import { DEFAULT_BANNER } from './constants'
 
-const ALWAYS = ['assets/wood.png', 'assets/natural-paper.png', 'assets/bannerfat1.png']
+const ALWAYS = ['assets/wood.png', 'assets/natural-paper.png', DEFAULT_BANNER]
 const isLocal = (s) =>
   typeof s === 'string' && (s.startsWith('assets/') || s.startsWith('data:image/'))
 const extOf = (dataUrl) =>

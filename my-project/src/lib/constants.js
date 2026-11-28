@@ -1,0 +1,1 @@
+export const DEFAULT_BANNER = 'assets/banner2.png'

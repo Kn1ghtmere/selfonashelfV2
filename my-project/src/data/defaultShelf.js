@@ -3,7 +3,7 @@ import { haytham } from './haytham'
 
 export const defaultShelf = {
   title: "Knightmere's Archive",
-  banner: { icon: 'scroll1' , heading: '', text: ''},
+  banner: { image:'assets/bannerfat1.png', heading: '', text: ''},
   owner: 'kn1ghtmere',
   shelves: [
     {
